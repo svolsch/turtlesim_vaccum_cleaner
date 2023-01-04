@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="name" default="turtle"/>
+    <arg name="keyboard_name" default="keyboard"/>
+    
+
+    <node pkg="turtlesim" type="turtlesim_node" name="$(arg name)">
+        
+    </node>
+    <node pkg="turtlesim" type="turtle_teleop_key" name="$(arg keyboard_name)" output="screen">
+        
+    </node>
+    <node pkg="learning_pkg" type="spawner.py" name="spawner_node" respawn="false" output="screen">
+        
+    </node>
+    <node pkg="learning_pkg" type="auto_behav_turt1.py" name="turtle_node1" respawn="false" output="screen">
+        
+    </node>
+    <node pkg="learning_pkg" type="auto_behav_turt2.py" name="turtle_node2" respawn="false" output="screen">
+        
+    </node>
+    <node pkg="learning_pkg" type="auto_behav_turt3.py" name="turtle_node3" respawn="false" output="screen">
+        
+    </node>
+    <node pkg="learning_pkg" type="auto_behav_turt4.py" name="turtle_node4" respawn="false" output="screen">
+        
+    </node>
+    <!-- <node pkg="learning_pkg" type="avoid_turtle1_2.py" name="node4" respawn="false" output="screen">
+        
+    </node>  -->
+    <!-- <node pkg="learning_pkg" type="pen_set.py" name="node2" respawn="false" output="screen">
+        
+    </node> -->
+
+</launch>
