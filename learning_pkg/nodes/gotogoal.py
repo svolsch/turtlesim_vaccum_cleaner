@@ -93,6 +93,7 @@ class TurtleBot:
            rospy.spin()
    
 if __name__ == '__main__':
+    while rospy.is_shutdown:
        try:
            x = TurtleBot()
            x.move2goal()

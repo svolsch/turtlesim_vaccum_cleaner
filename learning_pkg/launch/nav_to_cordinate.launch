@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="name" default="turtle"/>
+    <arg name="keyboard_name" default="keyboard"/>
+    
+
+    <node pkg="turtlesim" type="turtlesim_node" name="$(arg name)">
+        
+    </node>
+    <node pkg="learning_pkg" type="gotogoal.py" name="nav_to_goal" output="screen">
+        
+    </node>
+
+</launch>
