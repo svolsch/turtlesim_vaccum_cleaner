@@ -14,7 +14,7 @@
     <node pkg="learning_pkg" type="spawner.py" name="spawner_node" respawn="false" output="screen">
         
     </node>
-    <node pkg="learning_pkg" type="move_turtles1and2.py" name="turtlemove" respawn="false" output="screen">
+    <node pkg="learning_pkg" type="turtleController.py" name="turtlemove" respawn="false" output="screen">
       
     </node>
     <!-- <node pkg="learning_pkg" type="auto_behav_turt1.py" name="turtle_node1" respawn="false" output="screen">
