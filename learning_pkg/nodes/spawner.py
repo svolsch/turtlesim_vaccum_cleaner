@@ -17,8 +17,7 @@ if __name__ == '__main__':
     rospy.init_node('turtle_spawner')
 
     # Spawn four turtles at different locations
-    turtle2= spawn_turtle(6.5, 5.5, 1.57)
-    turtle3 = spawn_turtle(4.5, 5.5, 3.14)
-    turtle4 = spawn_turtle(5.5, 6.5, -1.57)
+    turtle2= spawn_turtle(1.0, 2.0, 1.57)
+    turtle3 = spawn_turtle(10.0, 9.0, -1.57)
 
-    print("Spawned turtles with names:", turtle2, turtle3, turtle4)
+    print("Spawned turtles with names:", turtle2, turtle3)

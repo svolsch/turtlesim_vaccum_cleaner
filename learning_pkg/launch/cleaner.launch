@@ -14,10 +14,13 @@
     <node pkg="learning_pkg" type="spawner.py" name="spawner_node" respawn="false" output="screen">
         
     </node>
-    <node pkg="learning_pkg" type="auto_behav_turt1.py" name="turtle_node1" respawn="false" output="screen">
+    <node pkg="learning_pkg" type="move_turtles1and2.py" name="turtlemove" respawn="false" output="screen">
+      
+    </node>
+    <!-- <node pkg="learning_pkg" type="auto_behav_turt1.py" name="turtle_node1" respawn="false" output="screen">
         
     </node>
-    <!-- <node pkg="learning_pkg" type="auto_behav_turt2.py" name="turtle_node2" respawn="false" output="screen">
+    <node pkg="learning_pkg" type="auto_behav_turt2.py" name="turtle_node2" respawn="false" output="screen">
         
     </node> -->
     <!-- <node pkg="learning_pkg" type="auto_behav_turt3.py" name="turtle_node3" respawn="false" output="screen">
@@ -26,18 +29,6 @@
     <node pkg="learning_pkg" type="auto_behav_turt4.py" name="turtle_node4" respawn="false" output="screen">
         
     </node> -->
-    <node name="turtle1_tf_broadcaster" pkg="learning_pkg" type="tf_broadcaster.py" respawn="false" output="screen" >
-      <param name="turtle" type="string" value="turtle1" />
-    </node>
-    <node name="turtle2_tf_broadcaster" pkg="learning_pkg" type="tf_broadcaster.py" respawn="false" output="screen" >
-      <param name="turtle" type="string" value="turtle2" /> 
-    </node>
-    <node name="turtle3_tf_broadcaster" pkg="learning_pkg" type="tf_broadcaster.py" respawn="false" output="screen" >
-      <param name="turtle" type="string" value="turtle3" /> 
-    </node>
-    <node name="turtle4_tf_broadcaster" pkg="learning_pkg" type="tf_broadcaster.py" respawn="false" output="screen" >
-      <param name="turtle" type="string" value="turtle4" /> 
-    </node>
 
 
 
