@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="turtlesim" type="turtlesim_node" name="sim"/>
+  <node pkg="learning_pkg" type="teleop.py" name="teleop" output="screen" launch-prefix="gnome-terminal --command">
+    
+  </node>
+  
+  
+</launch>

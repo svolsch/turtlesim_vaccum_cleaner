@@ -23,7 +23,6 @@ class turtleCleaners:
         self.turtle2_pose_subscriber = rospy.Subscriber('/turtle2/pose', Pose, self.turtle2_pose_callback)
         self.turtle3_pose_subscriber = rospy.Subscriber('/turtle3/pose', Pose, self.turtle3_pose_callback)
 
-        self.wall_distance = 1.0  # distance from the wall at which the turtle should turn
         self.set_pen_color(255, 255, 255)  # set pen color to white
         
     #Turtle 1 callback function 
@@ -57,29 +56,31 @@ class turtleCleaners:
     def move_turtle1(self):
         vel_msg = Twist()
         lin_vel = 3.5
-        ang_vel = random.choice([3.5, -3.5])
+        ang_vel = 3.5
+        dist12 = abs(math.sqrt((self.turtle2_x - self.turtle1_x)**2 + (self.turtle2_y - self.turtle1_y)**2))
+        dist13 = abs(math.sqrt((self.turtle3_x - self.turtle1_x)**2 + (self.turtle3_y - self.turtle1_y)**2))
 
         # If distance between turtle 1 and turtle 2 is less than 3.0 move around
-        if abs(math.sqrt((self.turtle2_x - self.turtle1_x)**2 + (self.turtle2_y - self.turtle1_y)**2)) < 3.0:
-            # vel_msg.linear.x = 1.0
-            # time.sleep(0.5)
-            vel_msg.angular.z = 3.5
-            vel_msg.linear.x = 3.5
-        # If distance between turtle 1 and turtle 3 is less than 3.0 move around
-        elif abs(math.sqrt((self.turtle3_x - self.turtle1_x)**2 + (self.turtle3_y - self.turtle1_y)**2)) < 3.0:
-            # vel_msg.linear.x = 1.0
-            # time.sleep(0.5)
-            vel_msg.angular.z = -3.5
-            vel_msg.linear.x = 3.5
-        # Move around if the distance between turtle 1 and the walls is less than 1.0
-        elif self.turtle1_x > 10.0 or self.turtle1_y > 10.0 or self.turtle1_x < 1.0 or self.turtle1_y < 1.0:
-            # time.sleep(0.5)
-            vel_msg.angular.z = 3.5
+        if dist12 < 2.0:
+            
+            vel_msg.angular.z = -ang_vel
             vel_msg.linear.x = lin_vel
 
+        # If distance between turtle 1 and turtle 3 is less than 3.0 move around
+        elif dist13 < 2.0:
             
+            vel_msg.angular.z = -ang_vel
+            vel_msg.linear.x = lin_vel
+
+        # Move around if the distance between turtle 1 and the walls is less than 1.0
+        elif self.turtle1_x > 10.0 or self.turtle1_y > 10.0 or self.turtle1_x < 1.0 or self.turtle1_y < 1.0:
+            
+            vel_msg.angular.z = -ang_vel
+            vel_msg.linear.x = lin_vel
+
         # If the turtle is not too close to either wall or any other turtles, go straight
         else:
+
             vel_msg.angular.z = 0
             vel_msg.linear.x = lin_vel
             
@@ -91,28 +92,30 @@ class turtleCleaners:
     def move_turtle2(self):
         vel_msg_2 = Twist()
         lin_vel = 3.5
-        ang_vel = random.choice([3.5, -3.5])
+        ang_vel = 3.5
+        dist21 = abs(math.sqrt((self.turtle2_x - self.turtle1_x)**2 + (self.turtle2_y - self.turtle1_y)**2))
+        dist23 = abs(math.sqrt((self.turtle3_x - self.turtle2_x)**2 + (self.turtle3_y - self.turtle2_y)**2))
 
         # If distance between turtle 2 and turtle 1 is less than 3.0 move around
-        if abs(math.sqrt((self.turtle2_x - self.turtle1_x)**2 + (self.turtle2_y - self.turtle1_y)**2)) < 3.0:
-            # vel_msg.linear.x = 1.0
-            # time.sleep(0.5)
-            vel_msg_2.angular.z = -3.5
-            vel_msg_2.linear.x = 3.5
+        if  dist21 < 2.0:
+            
+            vel_msg_2.angular.z = ang_vel
+            vel_msg_2.linear.x = lin_vel
+
         # If distance between turtle 2 and turtle 3 is less than 3.0 move around
-        elif abs(math.sqrt((self.turtle3_x - self.turtle2_x)**2 + (self.turtle3_y - self.turtle2_y)**2)) < 3.0:
-            # vel_msg.linear.x = 1.0
-            # time.sleep(0.5)
-            vel_msg_2.angular.z = 3.5
-            vel_msg_2.linear.x = 3.5
+        elif dist23 < 2.0:
+            
+            vel_msg_2.angular.z = ang_vel
+            vel_msg_2.linear.x = lin_vel
+
         # Move around if the distance between turtle 2 and the walls is less than 1.0
         elif self.turtle2_x > 10.0 or self.turtle2_y > 10.0 or self.turtle2_x < 1.0 or self.turtle2_y < 1.0:
-            # time.sleep(0.5)
-            vel_msg_2.angular.z = -3.5
+            
+            vel_msg_2.angular.z = ang_vel
             vel_msg_2.linear.x = lin_vel
         
 
-    
+
         # If the turtle is not too close to either wall or any other turtles, go straight
         else:
             vel_msg_2.angular.z = 0
@@ -126,19 +129,25 @@ class turtleCleaners:
     def move_turtle3(self):
         vel_msg_3 = Twist()
         lin_vel = 3.5
-        ang_vel = random.choice([3.5, -3.5])
+        ang_vel = 3.5
+        dist31 = abs(math.sqrt((self.turtle3_x - self.turtle1_x)**2 + (self.turtle3_y - self.turtle1_y)**2))
+        dist32 = abs(math.sqrt((self.turtle3_x - self.turtle2_x)**2 + (self.turtle3_y - self.turtle2_y)**2))
 
         ## If distance between turtle 3 and turtle 1 is less than 3.0 move around
-        if abs(math.sqrt((self.turtle3_x - self.turtle1_x)**2 + (self.turtle3_y - self.turtle1_y)**2)) < 3.0:
-            vel_msg_3.angular.z = 3.5
-            vel_msg_3.linear.x = 3.5
+        if dist31 < 2.0:
+
+            vel_msg_3.angular.z = -ang_vel
+            vel_msg_3.linear.x = lin_vel
+            
         # If distance between turtle 3 and turtle 2 is less than 3.0 move around
-        elif abs(math.sqrt((self.turtle3_x - self.turtle2_x)**2 + (self.turtle3_y - self.turtle2_y)**2)) < 3.0:
-            vel_msg_3.angular.z = -3.5
-            vel_msg_3.linear.x = 3.5
+        elif dist32 < 2.0:
+
+            vel_msg_3.angular.z = ang_vel
+            vel_msg_3.linear.x = lin_vel
+
         # Move around if the distance between turtle 3 and the walls is less than 1.0
         elif self.turtle3_x > 10.0 or self.turtle3_y > 10.0 or self.turtle3_x < 1.0 or self.turtle3_y < 1.0:
-            vel_msg_3.angular.z = 3.5
+            vel_msg_3.angular.z = -ang_vel
             vel_msg_3.linear.x = lin_vel
         
 
