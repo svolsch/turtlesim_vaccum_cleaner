@@ -15,9 +15,9 @@ def on_press(key):
     elif key == keyboard.Key.down: 
         turtle_vel.linear.x = -lin_vel # Move backwards when lower cursor is pressed 
     elif key == keyboard.Key.left:
-        turtle_vel.angular.z = -ang_vel # Turn left when left cursor is pressed
+        turtle_vel.angular.z = ang_vel # Turn left when left cursor is pressed
     elif key == keyboard.Key.right:
-        turtle_vel.angular.z = ang_vel # Turn right if right cursor is pressed
+        turtle_vel.angular.z = -ang_vel # Turn right if right cursor is pressed
     pub.publish(turtle_vel) # Publish Twist()
 
 def on_release(key):
